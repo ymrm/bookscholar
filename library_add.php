@@ -1,8 +1,7 @@
 <html>
-<head><title>データの追加</title></head>
+<head><title>result</title></head>
 <body>
 <?php
-print('aaaa');
 print($_GET['comment']);
 ?>
 </body>
