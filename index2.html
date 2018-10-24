@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <title>わたしの家計簿</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+    <br/>
+    <br/>
+    <h1>わたしの家計簿</h1>
+    <p>201511514   清水花菜子</p>
+    <br/>
+
+    <h2>買い物を記録しましょう</h2>
+
+<form action="addressinput.php" method="post">
+<table border="1">
+<tr>
+<td>あなたのid</td>
+<td><input type="number" name="person_id"></td>
+</tr>
+<tr>
+<td>商品のid</td>
+<td><input type="number" name="item_id"></td>
+</tr>
+<tr>
+<td>買い物した年</td>
+<td><input type="number" name="year"></td>
+</tr>
+<tr>
+<td>買い物した月</td>
+<td><input type="number" name="month"></td>
+</tr>
+<tr>
+<td>買い物した日</td>
+<td><input type="number" name="date"></td>
+</tr>
+<tr>
+<td>商品の単価</td>
+<td><input type="number" name="price"></td>
+</tr>
+<tr>
+<td>買った個数</td>
+<td><input type="number" name="count"></td>
+</tr>
+<tr>
+<td>コメント</td>
+<td><input type="text" name="comment"></td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="入力"></td>
+</tr>
+</table>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h2>買い物を振り返りましょう</h2>
+<table border="1" cellspacing="0">
+<tr>
+<td>あなたのid</td>
+<td><input type="number" name="person_id"></td>
+</tr>
+<tr>
+<td>年</td>
+<td><input type="number" name="year"></td>
+</tr>
+
+<tr>
+<td>月</td>
+<td><input type="number" name="month"></td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<input type="submit" name="submit" value="検索"></td>
+</tr>
+</table>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h2>テーブル</h2>
+    <li><a href="http://turkey.slis.tsukuba.ac.jp/~s1511514/system/people.php">人</a>
+    <br/>
+    <li><a href="http://turkey.slis.tsukuba.ac.jp/~s1511514/system/times.php">時</a>
+    <br/>
+    <li><a href="http://turkey.slis.tsukuba.ac.jp/~s1511514/system/genru.php">ジャンル</a>
+    <br/>
+    <li><a href="http://turkey.slis.tsukuba.ac.jp/~s1511514/system/items.php">もの</a>
+    <br/>
+    <li><a href="http://turkey.slis.tsukuba.ac.jp/~s1511514/system/purchase.php">購入</a>
+    <br/>
+    <br/>
+    </div>
+  </body>
+</html>
