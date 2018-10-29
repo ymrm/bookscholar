@@ -21,6 +21,12 @@ print '<form method="post" name="form1" action="test2.php">';
 <a href="javascript:form1[<?php echo $i;?>].submit()"><?php echo $title; ?></a>
 
 <?php
+//•\Ž¦
+$sql_result_3=$db->query("SELECT * FROM isbn WHERE book_id = $i");
+$data_3=$sql_result_3->fetchArray();
+$isbn = $data_3['isbn'];
+print "<p>".$isbn."</p>";
+
 //“à—eà–¾‚Ì•\Ž¦
 $sql_result_2=$db->query("SELECT * FROM summary WHERE book_id = $i");
 $data_2=$sql_result_2->fetchArray();
@@ -32,6 +38,7 @@ $sql_result_1=$db->query("SELECT * FROM content WHERE book_id = $i");
 $data_1=$sql_result_1->fetchArray();
 $content = $data_1['content'];
 print "<p>".$content."</p>";
+
 
 print "</form>";
 print "</br>";
