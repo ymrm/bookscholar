@@ -1,0 +1,58 @@
+
+/* Flexboxを使った2カラムレイアウト */
+#wrap {
+  display: flex;
+}
+#left_content {
+  width: 800px;
+/*	background: #f44336; //赤 */
+}
+#right_content {
+  width: 800px;
+/*	background: #2196F3; //青 */
+}
+
+
+body {
+  background-color: #FFFFFF;
+  color: #000000
+}
+* {
+  font-family: "SimHei",sans-serif;
+  font-weight: bold
+}
+h2 {
+  font-size: 1.2em;
+  margin-left: 3%;
+  margin-right: 30%;
+}
+p {
+  font-size: 1em;
+  line-height: 1.4;
+  margin-left: 5%;
+  margin-right: 30%;
+  color: #FFFFFF
+}
+a {
+  font-size: 1em;
+  line-height: 1.4;
+  margin-left: 5%;
+  margin-right: 30%;
+  color: #6091d3;/*文字色*/
+text-align: center;
+}
+
+.box2 {
+    padding: 1em 1em;
+    margin: 0em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+  width: 500px;
+}
+.box2 p {
+    margin: 0; 
+    padding: 0;
+}

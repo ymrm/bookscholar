@@ -1,0 +1,10 @@
+/* Flexboxを使った2カラムレイアウト */
+#wrap {
+  display: flex;
+}
+#left_content {
+  width: 200px;
+}
+#right_content {
+  width: 560px;
+}
