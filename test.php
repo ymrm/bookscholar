@@ -8,7 +8,6 @@
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="./swiper-4.4.1/dist/css/swiper.min.css">
 
-<link rel="stylesheet" type="text/css" href="test.css">
   <!-- Demo styles -->
   <style>
     html, body {
@@ -50,6 +49,7 @@
 </head>
 <body>
 <h2>興味のある新書本を選択してください</h2>
+
 <?php
 function outputsinsyo($ii){
 
@@ -62,18 +62,8 @@ $sql_result=$db->query("SELECT * FROM title WHERE book_id = $i");
 $data=$sql_result->fetchArray();
 $book_id = $data['book_id'];
 $title = $data['title'];
-print '<form method="post" name="form1" action="test2.php">';
-// 次のページに選択した新書本のIDを送る
-print '<input type="hidden" name="book_id" value="';
-echo $book_id; 
-print '">';
-print '<div class="box2">';
-print '<a href="javascript:form1[';
-echo $i;
-print '].submit()">';
-echo $title;
-print '</a>';
-print '</div>';
+
+
 //ISSNの表示
 $sql_result_3=$db->query("SELECT * FROM isbn WHERE book_id = $i");
 $data_3=$sql_result_3->fetchArray();
@@ -91,6 +81,21 @@ $sql_result_1=$db->query("SELECT * FROM content WHERE book_id = $i");
 $data_1=$sql_result_1->fetchArray();
 $content = $data_1['content'];
 //print "<p>".$content."</p>";
+$summary_content = $summary.$content;
+
+
+print '<form method="post" name="form1" action="test2.php">';
+// 次のページに選択した新書本のIDを送る
+print '<input type="hidden" name="book_id" value="';
+echo $book_id; 
+print '">';
+print '<div class="box2">';
+print '<a href="javascript:form1[';
+echo $i;
+print '].submit()">';
+print '<span title='.$summary_content.'>'.$title.'</p>';
+print '</a>';
+print '</div>';
 
 
 print "</form>";
@@ -104,19 +109,9 @@ $sql_result=$db->query("SELECT * FROM title WHERE book_id = $i");
 $data=$sql_result->fetchArray();
 $book_id = $data['book_id'];
 $title = $data['title'];
-print '<form method="post" name="form1" action="test2.php">';
-// 次のページに選択した新書本のIDを送る
-print '<input type="hidden" name="book_id" value="';
-echo $book_id; 
-print '">';
 
-print '<div class="box2">';
-print '<a href="javascript:form1[';
-echo $i;
-print '].submit()">';
-echo $title; 
-print '</a>';
-print '</div>';
+
+
 //ISSNの表示
 $sql_result_3=$db->query("SELECT * FROM isbn WHERE book_id = $i");
 $data_3=$sql_result_3->fetchArray();
@@ -135,6 +130,24 @@ $data_1=$sql_result_1->fetchArray();
 $content = $data_1['content'];
 //print "<p>".$content."</p>";
 
+$summary_content = $summary.$content;
+
+
+
+
+print '<form method="post" name="form1" action="test2.php">';
+// 次のページに選択した新書本のIDを送る
+print '<input type="hidden" name="book_id" value="';
+echo $book_id; 
+print '">';
+
+print '<div class="box2">';
+print '<a href="javascript:form1[';
+echo $i;
+print '].submit()">';
+print '<span title='.$summary_content.'>'.$title.'</p>';
+print '</a>';
+print '</div>';
 
 print "</form>";
 print "</br>";
@@ -166,18 +179,8 @@ $sql_result=$db->query("SELECT * FROM title WHERE book_id = 792");
 $data=$sql_result->fetchArray();
 $book_id = $data['book_id'];
 $title = $data['title'];
-print '<form method="post" name="form1" action="test2.php">';
-// 次のページに選択した新書本のIDを送る
-print '<input type="hidden" name="book_id" value="';
-echo $book_id; 
-print '">';
-print '<div class="box2">';
-print '<a href="javascript:form1[';
-echo $i;
-print '].submit()">';
-echo $title;
-print '</a>';
-print '</div>';
+
+
 //ISSNの表示
 $sql_result_3=$db->query("SELECT * FROM isbn WHERE book_id = 792");
 $data_3=$sql_result_3->fetchArray();
@@ -195,6 +198,23 @@ $sql_result_1=$db->query("SELECT * FROM content WHERE book_id = 792");
 $data_1=$sql_result_1->fetchArray();
 $content = $data_1['content'];
 //print "<p>".$content."</p>";
+
+$summary_content = $summary.$content;
+
+
+print '<form method="post" name="form1" action="test2.php">';
+// 次のページに選択した新書本のIDを送る
+print '<input type="hidden" name="book_id" value="';
+echo $book_id; 
+print '">';
+print '<div class="box2">';
+print '<a href="javascript:form1[';
+echo $i;
+print '].submit()">';
+print '<span title='.$summary_content.'>'.$title.'</p>';
+print '</a>';
+print '</div>';
+
 
 
 print "</form>";
