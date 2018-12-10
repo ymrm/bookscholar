@@ -48,7 +48,9 @@
   </style>
 </head>
 <body>
-<h2>興味のある新書本を選択してください</h2>
+<center>
+<h1>興味のある新書本を選択してください</h1>
+</center>
 
 <?php
 function outputsinsyo($ii){
