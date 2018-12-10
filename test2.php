@@ -4,8 +4,8 @@ $db=new SQLite3('./database.db');
 $sql_result=$db->query("SELECT * FROM title WHERE book_id = $post_book_id");
 $data=$sql_result->fetchArray();
 $title = $data['title'];
-print "<h2>「".$title."」を選択しました</h2>";
-print '<p>興味のある学問は、</p>';
+print "<center><h1>「".$title."」を選択しました。</h1>";
+print '<h1>興味のある学問のランキングが表示されます。</h1></center>';
 ?>
 <html>
 <head>
@@ -50,7 +50,19 @@ print '<p>興味のある学問は、</p>';
       -ms-flex-align: center;
       -webkit-align-items: center;
 }
+	  .wrapper {
+	    max-width: 300px;
+	    margin: 0 auto;
+	    text-align: center;
+	    background: #cccccc;
+	  }
+	  .txt {
+	    display: inline-block;
+	    text-align: left;
+	  }
 </style>
+
+
 </head>
 <body>
 <?php
@@ -61,14 +73,16 @@ for ($i=1; $i<55;$i++){
   $book_id = $data['book_id'];
   $sch_id = $data['sch_id'];
   $rank = $data['rank'];
-  print "<p>No.".$rank."</p>";
+print "<div class='wrapper' style='margin-top: 10px;'>";
+  print "<h2 class='txt'>No.".$rank. "&nbsp;&nbsp;&nbsp";
   //print "<p>ID.".$sch_id."</p>";
 
   $sql_result=$db->query("SELECT * FROM scholar WHERE sch_id = $sch_id");
   $data=$sql_result->fetchArray();
   $sch_name = $data['sch_name'];
-  print "<p>".$sch_name."</p>";
+  print $sch_name."</h2>";
 print "</br>";
+print "</div>";
 }
 $db->close();
 ?>
