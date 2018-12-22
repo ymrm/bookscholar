@@ -49,7 +49,7 @@
 </head>
 <body>
 <center>
-<h1>興味のある新書本を選択してください</h1>
+<h1>興味のあるキーワードを選択してください</h1>
 </center>
 
 <?php
@@ -86,6 +86,19 @@ $content = $data_1['content'];
 $summary_content = $summary.$content;
 
 
+//キーワードを入手
+$sql_result_4=$db->query("SELECT * FROM keyword WHERE book_id = $i");
+$data_4=$sql_result_4->fetchArray();
+$keyword_list = $data_4['keyword_list'];
+//print "<p>".$keyword_name."</p>";
+
+
+
+
+
+
+
+
 print '<form method="post" name="form1" action="keyword_test2.php">';
 // 次のページに選択した新書本のIDを送る
 print '<input type="hidden" name="book_id" value="';
@@ -95,7 +108,8 @@ print '<div class="box2">';
 print '<a href="javascript:form1[';
 echo $i;
 print '].submit()">';
-print '<span title='.$summary_content.'>'.$title.'</p>';
+//目次内容説明なしprint '<span title='.$summary_content.'>'.$keyword_list.'</p>';
+print $keyword_list.'</p>';
 print '</a>';
 print '</div>';
 
@@ -134,6 +148,10 @@ $content = $data_1['content'];
 
 $summary_content = $summary.$content;
 
+//キーワードを入手
+$sql_result_4=$db->query("SELECT * FROM keyword WHERE book_id = $i");
+$data_4=$sql_result_4->fetchArray();
+$keyword_list = $data_4['keyword_list'];
 
 
 
@@ -147,7 +165,8 @@ print '<div class="box2">';
 print '<a href="javascript:form1[';
 echo $i;
 print '].submit()">';
-print '<span title='.$summary_content.'>'.$title.'</p>';
+//目次内容説明なしprint '<span title='.$summary_content.'>'.$keyword_list.'</p>';
+print $keyword_list.'</p>';
 print '</a>';
 print '</div>';
 
