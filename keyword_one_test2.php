@@ -1,10 +1,10 @@
 <?php
-$post_book_id = $_POST["book_id"];
+$post_key_id = $_POST["key_id"];
 $db=new SQLite3('./database.db');
-$sql_result=$db->query("SELECT * FROM title WHERE book_id = $post_book_id");
+$sql_result=$db->query("SELECT * FROM keyword_one WHERE key_id = $post_key_id");
 $data=$sql_result->fetchArray();
-$title = $data['title'];
-//print "<center><h1>「".$title."」を選択しました</h1>";
+$keyword = $data['keyword'];
+print "<center><h1>「".$keyword."」を選択しました</h1>";
 print '<h1>選択したキーワードから、興味のある学問のランキングが表示します</h1></center>';
 ?>
 <html>
@@ -68,9 +68,9 @@ print '<h1>選択したキーワードから、興味のある学問のランキ
 <?php
 $db=new SQLite3('./database.db');
 for ($i=1; $i<55;$i++){
-  $sql_result=$db->query("SELECT * FROM rank WHERE book_id = $post_book_id and rank = $i");
+  $sql_result=$db->query("SELECT * FROM keyrank WHERE key_id = $post_key_id and rank = $i");
   $data=$sql_result->fetchArray();
-  $book_id = $data['book_id'];
+  $key_id = $data['key_id'];
   $sch_id = $data['sch_id'];
   $rank = $data['rank'];
 print "<div class='wrapper' style='margin-top: 10px;'>";

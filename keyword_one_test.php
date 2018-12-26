@@ -60,36 +60,12 @@ print '<div id="left_content">';
 $db=new SQLite3('./database.db');
 
 for ($i=$ii; $i<($ii+6);$i++){  //全ての新書本を表示
-$sql_result=$db->query("SELECT * FROM title WHERE book_id = $i");
-$data=$sql_result->fetchArray();
-$book_id = $data['book_id'];
-$title = $data['title'];
-
-
-//ISSNの表示
-$sql_result_3=$db->query("SELECT * FROM isbn WHERE book_id = $i");
-$data_3=$sql_result_3->fetchArray();
-$isbn = $data_3['isbn'];
-//print "<p>".$isbn."</p>";
-
-//内容説明の表示
-$sql_result_2=$db->query("SELECT * FROM summary WHERE book_id = $i");
-$data_2=$sql_result_2->fetchArray();
-$summary = $data_2['summary'];
-//print "<p>".$summary."</p>";
-
-//目次の表示
-$sql_result_1=$db->query("SELECT * FROM content WHERE book_id = $i");
-$data_1=$sql_result_1->fetchArray();
-$content = $data_1['content'];
-//print "<p>".$content."</p>";
-$summary_content = $summary.$content;
-
 
 //キーワードを入手
 $sql_result_4=$db->query("SELECT * FROM keyword_one WHERE key_id = $i");
 $data_4=$sql_result_4->fetchArray();
 $keyword = $data_4['keyword'];
+$key_id = $data_4['key_id'];
 //print "<p>".$keyword_name."</p>";
 
 
@@ -100,9 +76,9 @@ $keyword = $data_4['keyword'];
 
 
 print '<form method="post" name="form1" action="keyword_one_test2.php">';
-// 次のページに選択した新書本のIDを送る
-print '<input type="hidden" name="book_id" value="';
-echo $book_id; 
+// 次のページに選択したキーワードのIDを送る
+print '<input type="hidden" name="key_id" value="';
+echo $key_id; 
 print '">';
 print '<div class="box2">';
 print '<a href="javascript:form1[';
@@ -121,44 +97,18 @@ print '</div>';
 print '<div id="right_content">';
 for ($i=($ii+6); $i<($ii+12);$i++){  //全ての新書本を表示
 
-$sql_result=$db->query("SELECT * FROM title WHERE book_id = $i");
-$data=$sql_result->fetchArray();
-$book_id = $data['book_id'];
-$title = $data['title'];
-
-
-
-//ISSNの表示
-$sql_result_3=$db->query("SELECT * FROM isbn WHERE book_id = $i");
-$data_3=$sql_result_3->fetchArray();
-$isbn = $data_3['isbn'];
-//print "<p>".$isbn."</p>";
-
-//内容説明の表示
-$sql_result_2=$db->query("SELECT * FROM summary WHERE book_id = $i");
-$data_2=$sql_result_2->fetchArray();
-$summary = $data_2['summary'];
-//print "<p>".$summary."</p>";
-
-//目次の表示
-$sql_result_1=$db->query("SELECT * FROM content WHERE book_id = $i");
-$data_1=$sql_result_1->fetchArray();
-$content = $data_1['content'];
-//print "<p>".$content."</p>";
-
-$summary_content = $summary.$content;
-
 //キーワードを入手
 $sql_result_4=$db->query("SELECT * FROM keyword_one WHERE key_id = $i");
 $data_4=$sql_result_4->fetchArray();
 $keyword = $data_4['keyword'];
+$key_id = $data_4['key_id'];
 
 
 
 print '<form method="post" name="form1" action="keyword_one_test2.php">';
 // 次のページに選択した新書本のIDを送る
-print '<input type="hidden" name="book_id" value="';
-echo $book_id; 
+print '<input type="hidden" name="key_id" value="';
+echo $key_id; 
 print '">';
 
 print '<div class="box2">';
