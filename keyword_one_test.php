@@ -134,7 +134,7 @@ print '</div>';
   <div class="swiper-container">
     <div class="swiper-wrapper">
 <?php
-for ($j=0; $j<793;$j+=12){  //全ての新書本を表示
+for ($j=0; $j<4021;$j+=12){  //全ての新書本を表示
 		print '<div class="swiper-slide">';
 		outputsinsyo($j);
 		print '</div>';
