@@ -10,7 +10,6 @@
 <div id="data"></div>
 
 
-</body>
 <!-- D3.js -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script type="text/javascript" src="d3/d3.js"></script>
@@ -20,19 +19,17 @@
 <!-- 本体処理 -->
 <script type='text/javascript'>
 //関数呼び出し
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
-word_cloud('./data.csv');
 
+for (var i = 1; i < 3; i++){
+  var csv_name = './data_' + i + '.csv';
+  console.log(csv_name); //テキスト名を作成する
+var draw =  word_cloud(csv_name); //ワードクラウドの表示
+//var rect = draw.rect(300,300);
+
+//draw.click(function(){
+//  alert("aaaaaaaaaaaaa");
+//});
+}
 
 //関数定義
 function word_cloud(csv_name){
@@ -87,6 +84,9 @@ d3.csv(DATA_FILE_PATH, function(error,data){
     d3.select("body").append("svg")
         .attr("width", 300)
         .attr("height", 300)
+      .append("a")
+        .attr("xlink:href","http://google.com/")
+        .attr("id","box1")
       .append("g")
         .attr("transform", "translate(150,150)")
       .selectAll("text")
@@ -103,9 +103,14 @@ d3.csv(DATA_FILE_PATH, function(error,data){
 
 
 })
+//        .on("click", function(){
+//            var url = "http://www.google.co.jp/search?q=" + d.text
+//            window.open(url, "_blank");[f:id:h-piiice16:20160218224644p:plain]
+//        });
 
 }
 
 
 </script>
+</body>
 </html>
