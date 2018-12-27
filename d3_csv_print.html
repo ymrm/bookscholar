@@ -85,9 +85,14 @@ d3.csv(DATA_FILE_PATH, function(error,data){
     d3.select("body").append("svg")
         .attr("width", 300)
         .attr("height", 300)
+
+
       .append("a")
-        .attr("xlink:href","http://google.com/")
+       // .attr("href","javascript:form1.submit()")
+        .attr("xlink:href","keyword_test2.php")
         .attr("id","box1")
+
+
       .append("g")
         .attr("transform", "translate(150,150)")
       .selectAll("text")
