@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+   <html lang="ja">
+      <head>
+         <meta charset="utf-8">
+         <title>D3 Test</title>
+         <script type="text/javascript" src="d3/d3.js"></script>
+         <script type="text/javascript" src="d3/d3.layout.cloud.js"></script>
+         <script type="text/javascript">
+         </script>
+
+         <style type="text/css">
+         </style>
+      </head>
+      <body>
+
+         <script type="text/javascript">
+//words_a キーワード
+var words_a = ["3T3 Cells", "Absorbable Implants", "Alkaline Phosphatase", "Alloys", "Animals", "Arc-melting methods", "Biocompatibility", "Biocompatible Materials", "Biodegradable magnesiums", "Biodegradable metal", "Biodegradable metals", "Biodegradable polymer", "Biological environments", "Biomaterials", "Biomedical applications", "Blood flow", "Body Fluids", "Calcification", "Calcium", "Calcium Carbonate", "Carbonate buffer system", "Cattle", "Cell Culture Techniques", "Cell Death", "Cell Line", "Cell Line, Tumor", "Cell Proliferation", "Cell Survival", "Cell culture condition", "Cell culture mediums", "Cell proliferation", "Cells, Cultured", "Chemical compositions", "Coated Materials, Biocompatible", "Coating surface", "Corrosion", "Corrosion behavior", "Culture Media", "Culture conditions", "Culture medium", "Degradation", "Degradation analysis", "Degradation behavior", "Dielectric Spectroscopy", "ECAP", "Elasticity", "Electrochemical Techniques", "Electrochemical impedance spectroscopy", "Electrochemical measurements", "Electrochemical techniques", "Electrochemistry", "Equal channel angular pressed", "Fine-grained structure", "Foetal bovine serums", "Fracture Fixation, Internal", "Hardness measurement", "Histopathological examinations", "Human Umbilical Vein Endothelial Cells", "Human osteosarcoma cells", "Humans", "Hydrogen-Ion Concentration", "Immersion", "In vitro degradation", "In-vitro", "In-vivo", "Ions", "Isotonic Solutions", "L929 cells", "Lactic Acid", "Living cell", "Local pH", "MC3T3-E1", "Magnesium", "Magnesium alloy", "Magnesium-calcium alloys", "Male", "Manganese", "Materials Testing", "Metabolic activity", "Metallic magnesium", "Mice", "Microscopy, Electron, Scanning", "Murine osteoblasts", "Nickel", "Niobium", "Optimum combination", "Physiological environment", "Pin-on-disk wear test", "Polarization resistances", "Poly L lactic acid", "Poly lactic-co-glycolic acid", "Poly(3-hydroxybutyrate)", "Poly(3-hydroxybutyrate-co-3-hydroxyvalerate)", "Polymer characteristics", "Polymers", "Potentiometry", "Pressure", "Rapid degradation", "Rats", "Rats, Wistar", "Recovery strain", "Recrystallization texture", "SaOS-2 differentiation", "Simulated body fluids", "Spectrometry, X-Ray Emission", "Spectrophotometry", "Spectroscopy, Fourier Transform Infrared", "Stress, Mechanical", "Strontium", "Substrate corrosion", "Superelasticity", "Surface Properties", "Tensile Strength", "Ti alloys", "Ti-based composite", "Titanium", "Tribological behaviors", "Tribological properties", "Wear mechanism", "Wear mechanisms", "X-Ray Microtomography", "ZM21 magnesium alloy", "Zinc", "biomaterials", "blood flow", "calcium phosphate", "capsule", "corrosion", "cytocompatibility", "degradation", "histopathology", "in vivo", "magnesium alloy"];
+
+// size_a 出現数であり大きさである
+var size_a = [1, 1, 1, 6, 5, 1, 1, 3, 1, 1, 3, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 2, 1, 2, 1, 1, 1, 2, 1, 4, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 3, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 7, 1, 1, 1, 1, 4, 2, 1, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2];
+  d3.layout.cloud().size([300, 300]) //表示される範囲の大きさ [width,height]
+      .words(d3.zip(words_a,size_a).map(function(d) {
+         return {text: d[0],size: d[1]*10} //10倍にしてある
+      })) 
+
+      .rotate(function() { return ~~(Math.random()); })  //傾きをなくした
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw) //on(終了,関数)の登録
+      .start();  //レイアウトを開始する
+ 
+  //ワード描画
+  function draw(words) {
+    d3.select("body").append("svg")
+        .attr("width", 300)
+        .attr("height", 300)
+      .append("g")
+        .attr("transform", "translate(150,150)")
+      .selectAll("text")
+        .data(words) //textに対し、wordsオブジェクトを渡す
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+
+          return "translate(" + [d.x, d.y] + ")"; //傾きをなくした
+        })
+        .text(function(d) { return d.text; });
+  }
+         </script>
+      </body>
+</html>

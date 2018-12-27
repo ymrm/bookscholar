@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>D3.js CSVファイルを読み込む</title>
+</head>
+<body>
+<!-- 一覧表の描画先-->
+<svg></svg>
+<svg></svg>
+<svg></svg>
+<svg></svg>
+
+<div id="data"></div>
+
+
+</body>
+<!-- D3.js -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript" src="d3/d3.js"></script>
+<script type="text/javascript" src="d3/d3.layout.cloud.js"></script>
+
+
+<!-- 本体処理 -->
+<script type='text/javascript'>
+//関数呼び出し
+word_cloud('./data.csv');
+
+
+//関数定義
+function word_cloud(csv_name){
+
+// 読み込みデータファイル
+//var DATA_FILE_PATH = './data.csv';
+var DATA_FILE_PATH = csv_name;
+// 一覧描画先
+var TARGET_ELEMENT_ID = '#data';
+// 項目名：漢字表記
+var word = 'keyword';
+// 項目名：かな表記
+var count = 'bm25';
+
+
+var words_a = [];
+var size_a = [];
+	
+//return word_a;
+d3.csv(DATA_FILE_PATH, function(error,data){
+        // 第2引数のdataの中に読み込んだデータがある
+
+        d3.select(TARGET_ELEMENT_ID)
+            .append('div')
+            .selectAll()
+            .data(data)
+            .enter()
+            .append('div')
+            .text(function (dataRow) {
+                // 読み込んだデータを参照する場合はコールバック関数を通す
+
+                var word_y = dataRow[word]; //1列目の単語を読む
+                var size_y = Math.round(dataRow[count]*10); //2列目の重さを読む
+
+                console.log(words_a.push(word_y)); //配列へ
+                console.log(size_a.push(size_y)); //配列へ
+            });
+
+
+  d3.layout.cloud().size([300, 300]) //表示される範囲の大きさ [width,height]
+      .words(d3.zip(words_a,size_a).map(function(d) {
+         return {text: d[0],size: d[1]*10} //10倍にしてある
+      })) 
+
+      .rotate(function() { return ~~(Math.random()); })  //傾きをなくした
+      .fontSize(function(d) { return d.size; })
+      .on("end", draw) //on(終了,関数)の登録
+      .start();  //レイアウトを開始する
+ 
+  //ワード描画
+  function draw(words) {
+    d3.select("body").append("svg")
+        .attr("width", 300)
+        .attr("height", 300)
+      .append("g")
+        .attr("transform", "translate(150,150)")
+      .selectAll("text")
+        .data(words) //textに対し、wordsオブジェクトを渡す
+      .enter().append("text")
+        .style("font-size", function(d) { return d.size + "px"; })
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d) {
+
+          return "translate(" + [d.x, d.y] + ")"; //傾きをなくした
+        })
+        .text(function(d) { return d.text; });
+  }
+
+
+})
+
+}
+
+
+</script>
+</html>
