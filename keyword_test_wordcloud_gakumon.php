@@ -1,11 +1,8 @@
 <?php
-$get_book_id = $_GET["book_id"];
+$get_sch_id = $_GET["book_id"];
+$get_sch_id = $get_sch_id -1;
 $db=new SQLite3('./database.db');
-$sql_result=$db->query("SELECT * FROM title WHERE book_id = $get_book_id");
-$data=$sql_result->fetchArray();
-$title = $data['title'];
-//print "<center><h1>「".$title."」を選択しました</h1>";
-print '<h1>選択したキーワードから、興味のある学問のランキングが表示します</h1></center>';
+print '<center><h1>選択したワードクラウドから、興味のある学問が表示されます</h1></center>';
 ?>
 <html>
 <head>
@@ -67,23 +64,20 @@ print '<h1>選択したキーワードから、興味のある学問のランキ
 <body>
 <?php
 $db=new SQLite3('./database.db');
-for ($i=1; $i<55;$i++){
-  $sql_result=$db->query("SELECT * FROM rank WHERE book_id = $get_book_id and rank = $i");
+  $sql_result=$db->query("SELECT * FROM scholar WHERE sch_id = $get_sch_id");
+//  $sql_result=$db->query("SELECT * FROM rank WHERE book_id = $get_book_id and rank = $i");
   $data=$sql_result->fetchArray();
-  $book_id = $data['book_id'];
   $sch_id = $data['sch_id'];
-  $rank = $data['rank'];
+  $sch_name = $data['sch_name'];
 print "<div class='wrapper' style='margin-top: 10px;'>";
-  print "<h2 class='txt'>No.".$rank. "&nbsp;&nbsp;&nbsp";
   //print "<p>ID.".$sch_id."</p>";
 
-  $sql_result=$db->query("SELECT * FROM scholar WHERE sch_id = $sch_id");
-  $data=$sql_result->fetchArray();
-  $sch_name = $data['sch_name'];
-  print $sch_name."</h2>";
+//  $sql_result=$db->query("SELECT * FROM scholar WHERE sch_id = $sch_id");
+//  $data=$sql_result->fetchArray();
+//  $sch_name = $data['sch_name'];
+  print "<h2>".$sch_name."</h2>";
 print "</br>";
 print "</div>";
-}
 $db->close();
 ?>
 </body>
