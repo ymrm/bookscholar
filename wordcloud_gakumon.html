@@ -19,7 +19,7 @@
 <script type='text/javascript'>
 //関数呼び出し
 
-for (var i = 10; i < 19; i++){
+for (var i = 1; i < 55; i++){
   var csv_name = './wordcloud_data/data_gakumon_' + i + '.txt';
   console.log(csv_name); //テキスト名を作成する
 var draw =  word_cloud(csv_name,i); //ワードクラウドの表示
@@ -54,6 +54,10 @@ d3.csv(DATA_FILE_PATH, function(error,data){
             .text(function (dataRow) {
                 // 読み込んだデータを参照する場合はコールバック関数を通す
 
+
+
+
+
                 var word_y = dataRow[word]; //1列目の単語を読む
                 var size_y = Math.round(dataRow[count]*10); //2列目の重さを読む
 
@@ -81,7 +85,7 @@ d3.csv(DATA_FILE_PATH, function(error,data){
 
       .append("a")
        // .attr("href","javascript:form1.submit()")
-        .attr("xlink:href","keyword_test_wordcloud.php?book_id="+i)
+        .attr("xlink:href","keyword_test_wordcloud_gakumon.php?book_id="+i)
 //        .attr("book_id","box1")
 
 
