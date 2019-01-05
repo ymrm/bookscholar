@@ -7,7 +7,7 @@
 <body>
 <!-- 一覧表の描画先-->
 <h2>興味のあるワードクラウドを選択してください<h2>
-<input type="button" onclick="location.href='./wordcloud_sinsyo_2p.html'" value="次のページへ">
+<input type="button" onclick="location.href='./wordcloud_sinsyo_16p.html'" value="次のページへ">
 <div id="data"></div>
 
 
@@ -20,7 +20,7 @@
 <script type='text/javascript'>
 //関数呼び出し
 
-for (var i = 1; i < 51; i++){
+for (var i = 701; i < 751; i++){
   var csv_name = './wordcloud_data/data' + i + '.txt';
   console.log(csv_name); //テキスト名を作成する
 var draw =  word_cloud(csv_name,i); //ワードクラウドの表示
