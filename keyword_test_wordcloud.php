@@ -1,7 +1,8 @@
 <?php
 $get_book_id = $_GET["book_id"];
+$get_book_id_1 = $get_book_id -1 ;
 $db=new SQLite3('./database.db');
-$sql_result=$db->query("SELECT * FROM title WHERE book_id = $get_book_id");
+$sql_result=$db->query("SELECT * FROM title WHERE book_id = $get_book_id_1");
 $data=$sql_result->fetchArray();
 $title = $data['title'];
 //print "<center><h1>「".$title."」を選択しました</h1>";
@@ -68,7 +69,7 @@ print '<h1>選択したキーワードから、興味のある学問のランキ
 <?php
 $db=new SQLite3('./database.db');
 for ($i=1; $i<55;$i++){
-  $sql_result=$db->query("SELECT * FROM rank WHERE book_id = $get_book_id and rank = $i");
+  $sql_result=$db->query("SELECT * FROM rank WHERE book_id = $get_book_id_1 and rank = $i");
   $data=$sql_result->fetchArray();
   $book_id = $data['book_id'];
   $sch_id = $data['sch_id'];
