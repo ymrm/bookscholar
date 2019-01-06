@@ -10,6 +10,7 @@ print '<h1>選択したキーワードから、興味のある学問のランキ
 <html>
 <head>
 <title>学問</title>
+<h2><a href="./test.php">戻る</a></h2>
 
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="./swiper-4.4.1/dist/css/swiper.min.css">
