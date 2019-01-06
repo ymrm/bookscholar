@@ -27,9 +27,9 @@ padding: 0;
 <body>
 <center>
 <h1>興味のある新書本を選択してください</h1>
-<u><p style="display:inline;">1</p></u>
+<a href="./sinsyo_sinsyo.php">1</a>
 <a href="./sinsyo_sinsyo_2p.php">2</a>
-<a href="./sinsyo_sinsyo_3p.php">3</a>
+<u><p style="display:inline;">3</p></u>
 <a href="./sinsyo_sinsyo_4p.php">4</a>
 <a href="./sinsyo_sinsyo_5p.php">5</a>
 <a href="./sinsyo_sinsyo_6p.php">6</a>
@@ -44,12 +44,12 @@ padding: 0;
 <a href="./sinsyo_sinsyo_15p.php">15</a>
 <a href="./sinsyo_sinsyo_16p.php">16</a>
 </br>
-<a href="./sinsyo_sinsyo_2p.php">次へ</a>
+<a href="./sinsyo_sinsyo_2p.php">前へ</a>
+<a href="./sinsyo_sinsyo_4p.php">次へ</a>
 </br>
 </br>
 </br>
 </br>
-
 <?php
 function outputsinsyo($i){
 
@@ -57,7 +57,7 @@ function outputsinsyo($i){
 		print '<div id="left_content">';
 		$db=new SQLite3('./database.db');
 
-		for ($i=0; $i<50;$i++){  //全ての新書本を表示
+		for ($i=100; $i<150;$i++){  //全ての新書本を表示
 				$sql_result=$db->query("SELECT * FROM title WHERE book_id = $i");
 				$data=$sql_result->fetchArray();
 				$book_id = $data['book_id'];

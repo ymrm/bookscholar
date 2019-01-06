@@ -27,7 +27,7 @@ padding: 0;
 <body>
 <center>
 <h1>興味のある新書本を選択してください</h1>
-<u><p style="display:inline;">1</p></u>
+<a href="./sinsyo_sinsyo.php">1</a>
 <a href="./sinsyo_sinsyo_2p.php">2</a>
 <a href="./sinsyo_sinsyo_3p.php">3</a>
 <a href="./sinsyo_sinsyo_4p.php">4</a>
@@ -36,7 +36,7 @@ padding: 0;
 <a href="./sinsyo_sinsyo_7p.php">7</a>
 <a href="./sinsyo_sinsyo_8p.php">8</a>
 <a href="./sinsyo_sinsyo_9p.php">9</a>
-<a href="./sinsyo_sinsyo_10p.php">10</a>
+<u><p style="display:inline;">10</p></u>
 <a href="./sinsyo_sinsyo_11p.php">11</a>
 <a href="./sinsyo_sinsyo_12p.php">12</a>
 <a href="./sinsyo_sinsyo_13p.php">13</a>
@@ -44,7 +44,8 @@ padding: 0;
 <a href="./sinsyo_sinsyo_15p.php">15</a>
 <a href="./sinsyo_sinsyo_16p.php">16</a>
 </br>
-<a href="./sinsyo_sinsyo_2p.php">次へ</a>
+<a href="./sinsyo_sinsyo_9p.php">前へ</a>
+<a href="./sinsyo_sinsyo_11p.php">次へ</a>
 </br>
 </br>
 </br>
@@ -57,7 +58,7 @@ function outputsinsyo($i){
 		print '<div id="left_content">';
 		$db=new SQLite3('./database.db');
 
-		for ($i=0; $i<50;$i++){  //全ての新書本を表示
+		for ($i=450; $i<500;$i++){  //全ての新書本を表示
 				$sql_result=$db->query("SELECT * FROM title WHERE book_id = $i");
 				$data=$sql_result->fetchArray();
 				$book_id = $data['book_id'];
