@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>ブックスカラ</title>
+<title>新書本選択画面</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 <!-- Link Swiper's CSS -->
@@ -26,7 +26,8 @@ padding: 0;
 </head>
 <body>
 <center>
-<h1>興味のある新書本を選択してください</h1>
+<h1>新書本選択システム(1)</h1>
+<h2>興味のある新書本を選択してください</h2>
 <u><p style="display:inline;">1</p></u>
 <a href="./sinsyo_sinsyo_2p.php">2</a>
 <a href="./sinsyo_sinsyo_3p.php">3</a>
@@ -51,7 +52,7 @@ padding: 0;
 </br>
 
 <?php
-function outputsinsyo($i){
+function outputsinsyo(){
 
 		print '<div id="wrap">';
 		print '<div id="left_content">';
@@ -99,7 +100,6 @@ function outputsinsyo($i){
 
 
 				print "</form>";
-				print "</br>";
 		}
 		print '</div>';
 		print '<div id="right_content">';
@@ -111,7 +111,7 @@ function outputsinsyo($i){
 
 <!-- Swiper -->
 <?php
-		outputsinsyo(0);
+		outputsinsyo();
 ?>
 
 </body>

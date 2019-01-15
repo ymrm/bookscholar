@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>ブックスカラ</title>
+<title>新書本選択画面</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
 <!-- Link Swiper's CSS -->
@@ -26,7 +26,8 @@ padding: 0;
 </head>
 <body>
 <center>
-<h1>興味のある新書本を選択してください</h1>
+<h1>新書本選択システム(6)</h1>
+<h2>興味のある新書本を選択してください</h2>
 
 <a href="./sinsyo_sinsyo.php">1</a>
 <a href="./sinsyo_sinsyo_2p.php">2</a>
@@ -58,7 +59,7 @@ function outputsinsyo($i){
 		print '<div id="left_content">';
 		$db=new SQLite3('./database.db');
 
-		for ($i=250; $i<300;$i++){  //全ての新書本を表示
+		for ($i=0; $i<793;$i++){  //全ての新書本を表示
 				$sql_result=$db->query("SELECT * FROM title WHERE book_id = $i");
 				$data=$sql_result->fetchArray();
 				$book_id = $data['book_id'];
@@ -87,6 +88,8 @@ function outputsinsyo($i){
 
 				print '<form method="post" name="form1" action="sinsyo_sinsyo2.php">';
 				// 次のページに選択した新書本のIDを送る
+
+if (250<=$i and $i<300){
 				print '<input type="hidden" name="book_id" value="';
 				echo $book_id; 
 				print '">';
@@ -96,11 +99,11 @@ function outputsinsyo($i){
 				print '].submit()">';
 				print '<span title='.$summary_content.'>'.$title.'</p>';
 				print '</a>';
-				print '</div>';
+	}	
+		print '</div>';
 
 
 				print "</form>";
-				print "</br>";
 		}
 		print '</div>';
 		print '<div id="right_content">';

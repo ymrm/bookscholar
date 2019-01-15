@@ -5,7 +5,7 @@ $sql_result=$db->query("SELECT * FROM title WHERE book_id = $post_book_id");
 $data=$sql_result->fetchArray();
 $title = $data['title'];
 //print "<center><h1>「".$title."」を選択しました</h1>";
-print '<h1>選択したキーワードから、興味のある学問のランキングが表示します</h1></center>';
+print '<center><h1>興味のある学問のランキングが表示されます</h1>';
 ?>
 <html>
 <head>
